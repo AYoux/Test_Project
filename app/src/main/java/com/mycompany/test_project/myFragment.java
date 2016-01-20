@@ -13,21 +13,22 @@ import android.widget.TextView;
  * Created by AY on 1/20/2016.
  */
 public class myFragment extends Fragment {
-
     @Override
     public View onCreateView (LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
-        View main_view = inflater.inflate(R.id.main_fragment, container);
+        View main_view = inflater.inflate(R.layout.fragment_my, container, false);
         Button sendButton = (Button) main_view.findViewById(R.id.button);
+        final EditText enteredText = (EditText) main_view.findViewById(R.id.editText);
+        final TextView view_text = (TextView) main_view.findViewById((R.id.textView));
 
-        sendButton.setOnClickListener(new View.onClickListener(){
-            public void onClick(View v){
+        sendButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
 
+                view_text.setText(enteredText.getText().toString());
             }
         });
 
-        EditText enteredText =  (EditText) main_view.findViewById(R.id.editText);
-        TextView view_text = new TextView(getContext());
-        view_text.setText(enteredText.getText().toString());
+
         return main_view;
+        /*return inflater.inflate(R.layout.fragment_my, container, false);*/
     }
 }
